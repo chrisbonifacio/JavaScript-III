@@ -12,15 +12,44 @@
 // Principle 1
 
 // code example for Window Binding
+console.log(this);
 
 // Principle 2
 
 // code example for Implicit Binding
 
+const person = {
+  name: "chris",
+  whatAmI: function() {
+    return this;
+  }
+};
+
+const person2 = {
+  name: "daniel"
+};
+
+console.log(person.whatAmI()); // this points to the object left of the dot
+
 // Principle 3
 
 // code example for New Binding
 
+function Person(personAttr) {
+  this.name = personAttr.name;
+  console.log(this);
+}
+
+// object created with 'new' keyword binds 'this' to that new object
+const newPerson = new Person({
+  name: "Daniel"
+});
+
+function shout() {
+  console.log(`MY NAME IS ${this.name}!`);
+}
+
 // Principle 4
 
 // code example for Explicit Binding
+console.log(person.whatAmI.call(person2)); // 'this' is binded to the person object
